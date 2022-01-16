@@ -1,5 +1,5 @@
 import json
-from utility import  timing
+from src.utility import timing
 
 
 class BMICalculator:
@@ -8,6 +8,7 @@ class BMICalculator:
     def __init__(self):
         self.bmi_patients_data_calculated = []
         self.overweight = 0
+        self.no_of_records = 0
 
     @staticmethod
     def read_json_data():
@@ -67,6 +68,7 @@ class BMICalculator:
             bmi_patients_data[cnt]["Health risk"] = self.get_health_risk(bmi)
         self.bmi_patients_data_calculated = bmi_patients_data
         self.overweight = overweight
+        self.no_of_records = len(bmi_patients_data)
 
     def get_bmi_data(self):
         return self.bmi_patients_data_calculated
@@ -74,3 +76,5 @@ class BMICalculator:
     def get_overweight(self):
         return self.overweight
 
+    def get_records_count(self):
+        return self.no_of_records

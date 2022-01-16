@@ -1,9 +1,25 @@
 import pytest
+import unittest
 from src.bmicalculator import BMICalculator
 
 
-@pytest.fixture
-def example_people_data():
+def test_bmi_calculation():
     obj = BMICalculator()
     obj.calculate_bmi()
-    print(obj.get_bmi_data())
+    assert obj.get_records_count() == 6
+
+
+def test_validate_no_of_overweight():
+    obj = BMICalculator()
+    obj.calculate_bmi()
+    assert obj.get_overweight() == 4
+
+
+def test_validate_bmi_category():
+    obj = BMICalculator()
+    obj.calculate_bmi()
+    updated_records = obj.get_bmi_data()
+    assert updated_records[0]['BMI Category'] == 'Moderately obese'
+
+
+
